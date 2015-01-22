@@ -1,5 +1,7 @@
 {
       "name": "node-santa",
+      "version": "1.0.0",
+      "description": "Secret Santa app",
       "main": "server.js",
       "dependencies": {
         "express" : "~4.5.1",
@@ -7,5 +9,12 @@
 	"morgan"   : "~1.2.2",
         "body-parser" : "~1.4.2",
         "method-override" : "~2.0.2"        
+      },
+      "engines": {
+      	"node": "0.10.x"
+      },
+      "scripts" : {
+        "start" : "node server.js"
       }
+      
 }

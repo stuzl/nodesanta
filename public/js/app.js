@@ -1,2 +1,7 @@
 // public/js/app.js
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService']);
+(function(){
+var app = angular.module('santa-app',['ngRoute','PersonController','PersonService']);
+//var app = angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl','PersonCtrl', 'NerdService','PersonService']);
+    
+
+})();

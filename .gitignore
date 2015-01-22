@@ -1,0 +1,9 @@
+#node dependancies
+node_modules
+
+#angular libraries
+public/libs
+
+#brackets config
+.brackets.json
+

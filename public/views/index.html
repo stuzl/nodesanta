@@ -32,7 +32,7 @@
         
         <!-- HEADER AND PERSON COUNT -->
         <div class="jumbotron text-center">
-            <h1>Santa List <span class="label label-info">{{ personCtrl.persons.length + 1 }}</span></h1>
+            <h1>Santa List <span class="label label-info">{{ personCtrl.persons.length }}</span></h1>
         </div>
 
         <!-- PWESON LIST -->
@@ -40,12 +40,22 @@
             <div class="col-sm-4 col-sm-offset-4">
 
                 <!-- LOOP OVER THE PERSONS IN personCtrl.persons -->
-                <div class="checkbox" ng-repeat="person in personCtrl.persons">
-                    <label>
-                        <input type="checkbox" ng-click="personCtrl.deletePerson(person._id)"> {{ person.name }}
-                    </label>
-                </div>
-
+                <table class="table table-bordered table-stiped" >
+                    <tr ng-repeat="person in personCtrl.persons">
+                       <td>
+                           {{person.name}}
+                        </td>
+                        <td>
+                            {{person.emailAddress}}
+                        </td>
+                        <td>
+                            {{person.familyNumber}}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-click="personCtrl.deletePerson(person._id)">Delete</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
@@ -58,6 +68,10 @@
                         <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
                         <input type="text" class="form-control input-lg text-center" placeholder="Name goes here" ng-model="personCtrl.formData.name">
                     </div>
+  <div class="form-group">
+    <label for="emailInput">Email address</label>
+    <input type="email" class="form-control" id="emailInput" placeholder="Enter email" ng-model="personCtrl.formData.emailAddress">
+  </div>
 
                     <!-- createToDo() WILL CREATE NEW TODOS -->
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="personCtrl.createPerson()">Add</button>

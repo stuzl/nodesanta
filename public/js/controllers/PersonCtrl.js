@@ -23,6 +23,9 @@ var app = angular.module('PersonController', [])
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
 			if (ctrl.formData.name != undefined) {
+                console.log(ctrl.formData.name)
+                console.log(ctrl.formData.emailAddress)
+                console.log(ctrl.formData.familNumber)
 				ctrl.loading = true;
 
 				// call the create function from our service (returns a promise object)

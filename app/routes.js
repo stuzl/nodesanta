@@ -45,8 +45,8 @@ var Person = require('./models/person');
         // create a person, information comes from AJAX request from Angular
             Person.create({
             name : req.body.name,
-            familyNumber : 1,
-            emailAddress : 'bob@bob.com'
+            familyNumber : req.body.familyNumber,
+            emailAddress : req.body.emailAddress
         }, function(err, person) {
                 console.log('got to here...');
             if (err){

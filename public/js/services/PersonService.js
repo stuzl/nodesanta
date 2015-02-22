@@ -6,7 +6,6 @@ var app = angular.module('PersonService', []);
 	app.factory('Persons', ['$http',function($http) {
 		return {
 			get : function() {
-                console.log('person service get /api/persons')
 				return $http.get('/api/persons');
 			},
 			create : function(personData) {

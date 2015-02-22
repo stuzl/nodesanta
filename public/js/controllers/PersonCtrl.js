@@ -2,7 +2,7 @@
 var app = angular.module('PersonController', [])
 
 	// inject the Person service factory into our controller
-	.controller('PersonController', ['Persons', function(Persons) {
+	.controller('PersonController', ['Persons','$scope', function(Persons,$scope) {
 		var ctrl = this;
 		ctrl.formData = {};
 		ctrl.loading = true;
@@ -10,11 +10,14 @@ var app = angular.module('PersonController', [])
 		// GET =====================================================================
 		// when landing on the page, get all persons and show them
 		// use the service to get all the persons
-		Persons.get()
-			.success(function(data) {
-				ctrl.persons = data;
-				ctrl.loading = false;
-			});
+        ctrl.refresh = function(){
+	  	    Persons.get()
+			    .success(function(data) {
+				    ctrl.persons = data;
+				    ctrl.loading = false;
+			    });
+        };
+        ctrl.refresh();
 
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
@@ -25,7 +28,7 @@ var app = angular.module('PersonController', [])
 			if (ctrl.formData.name != undefined) {
                 console.log(ctrl.formData.name)
                 console.log(ctrl.formData.emailAddress)
-                console.log(ctrl.formData.familNumber)
+                console.log(ctrl.formData.familyNumber)
 				ctrl.loading = true;
 
 				// call the create function from our service (returns a promise object)
@@ -52,5 +55,16 @@ var app = angular.module('PersonController', [])
 					ctrl.persons = data; // assign our new list of todos
 				});
 		};
+
+        $scope.$on('userLoggedIn', function(event, arg) { 
+        if(arg){ 
+              console.log("refreshing person data")
+              ctrl.refresh();
+              } else{
+                  ctrl.persons = {};
+              }    
+        }); 
+          
+
 	}]);
 })();
